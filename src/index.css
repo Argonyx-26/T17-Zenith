@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lavender: #9f84b1;
+  --color-lavender-light: #bca5d3;
+  --color-lavender-wash: #f1eaf5;
+  --color-page: #f8f4fa;
+  --color-ink: #3a2a45;
+  --color-muted: #766a80;
+  --color-line: #e8e0ec;
+  --color-on-track: #4eab7a;
+  --color-on-track-bg: #e2f5ec;
+  --color-at-risk: #e06b7f;
+  --color-at-risk-bg: #fdecee;
+  --color-progress: #d3973e;
+  --color-progress-bg: #fff2df;
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Fraunces", serif;
+}
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #3a2a45;
+  background: #f8f4fa;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  color: #3a2a45;
+  background: #bca5d3;
+}
+
+.mastery-fill {
+  animation: fill-in 700ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  transform-origin: left;
+}
+
+.report-bar-rise {
+  animation: report-bar-rise 720ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  transform-origin: bottom;
+}
+
+.map-canvas {
+  background-image: radial-gradient(#e8e0ec 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.flash-success {
+  animation: node-flash 900ms ease-out both;
+}
+
+.concept-network {
+  position: relative;
+  isolation: isolate;
+}
+
+.concept-network::before,
+.concept-network::after {
+  position: absolute;
+  z-index: 0;
+  content: "";
+  background: #e8e0ec;
+}
+
+.concept-network::before {
+  inset-inline: 5%;
+  top: 50%;
+  height: 1px;
+}
+
+.concept-network::after {
+  top: 8%;
+  bottom: 8%;
+  left: 50%;
+  width: 1px;
+}
+
+@keyframes node-flash {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(78, 171, 122, 0); }
+  35% { box-shadow: 0 0 0 6px rgba(78, 171, 122, 0.25); }
+}
+
+@keyframes fill-in {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes report-bar-rise {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
